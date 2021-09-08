@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const TodoInsert = () => {
+interface TodoInsertProps {
+  onInsert: (text: string) => void;
+}
+
+const TodoInsert = ({ onInsert }: TodoInsertProps) => {
+  const [text, setText] = useState('');
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
   return (
     <TodoInsertBlock>
-      <input type="text" placeholder="할 일을 입력하세요" />
-      <button>+</button>
+      <input
+        type="text"
+        placeholder="할 일을 입력하세요"
+        value={text}
+        onChange={onChange}
+      />
+      <button
+        type="button"
+        onClick={() => {
+          onInsert(text);
+          setText('');
+        }}
+      >
+        +
+      </button>
     </TodoInsertBlock>
   );
 };
