@@ -22,6 +22,7 @@ const Popup = () => {
   };
 
   const onToggle = (id: number) => {
+    console.log(id);
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, done: !todo.done } : todo
@@ -37,7 +38,7 @@ const Popup = () => {
     <PopupBlock>
       <div className="title">오늘 할일</div>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onToggle={onToggle} onRemove={onRemove} />
     </PopupBlock>
   );
 };
