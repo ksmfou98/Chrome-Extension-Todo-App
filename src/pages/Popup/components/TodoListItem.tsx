@@ -18,7 +18,7 @@ const TodoListItem = ({ todo, onRemove, onToggle }: TodoListItemProps) => {
   console.log(done);
 
   return (
-    <TodoListItemBlock done>
+    <TodoListItemBlock done={done}>
       <div className="checkbox" onClick={() => onToggle(id)}>
         {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <div className="text">{text}</div>
